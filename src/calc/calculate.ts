@@ -6,6 +6,8 @@ export type Calculation = {
   inss: number
   proLaboreLiquido: number
   dividendos: number
+  totalImpostos: number
+  totalImpostosComProLabore: number
   usedMinWage: boolean
 }
 
@@ -20,6 +22,8 @@ export function calculateFromCents(
   const inss = Math.round(proLaboreBruto * ALIQUOTA_INSS)
   const proLaboreLiquido = proLaboreBruto - inss
   const dividendos = brutoCents - proLaboreBruto - das
+  const totalImpostos = das + inss
+  const totalImpostosComProLabore = totalImpostos + proLaboreBruto
 
   return {
     das,
@@ -27,6 +31,8 @@ export function calculateFromCents(
     inss,
     proLaboreLiquido,
     dividendos,
+    totalImpostos,
+    totalImpostosComProLabore,
     usedMinWage,
   }
 }

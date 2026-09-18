@@ -12,6 +12,8 @@ const rows: Array<{ key: keyof Omit<Calculation, 'usedMinWage'>; label: string }
     { key: 'inss', label: 'Valor do INSS' },
     { key: 'proLaboreLiquido', label: 'Pró-labore líquido' },
     { key: 'dividendos', label: 'Valor dos dividendos' },
+    { key: 'totalImpostos', label: 'Total de impostos' },
+    { key: 'totalImpostosComProLabore', label: 'Total de impostos com pró-labore' },
   ]
 
 export function ResultList({ result }: ResultListProps) {
