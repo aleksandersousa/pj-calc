@@ -1,21 +1,21 @@
-import { useMemo, useState } from 'react'
-import { calculateFromCents } from './calc/calculate'
-import { SALARIO_MINIMO } from './calc/constants'
-import { CurrencyInput } from './components/CurrencyInput'
-import { ResultList } from './components/ResultList'
+import { useMemo, useState } from "react";
+import { calculateFromCents } from "./calc/calculate";
+import { SALARIO_MINIMO } from "./calc/constants";
+import { CurrencyInput } from "./components/CurrencyInput";
+import { ResultList } from "./components/ResultList";
 
-const DEFAULT_MIN_WAGE_CENTS = Math.round(SALARIO_MINIMO * 100)
+const DEFAULT_MIN_WAGE_CENTS = Math.round(SALARIO_MINIMO * 100);
 
 export default function App() {
-  const [cents, setCents] = useState(0)
-  const [minWageCents, setMinWageCents] = useState(DEFAULT_MIN_WAGE_CENTS)
+  const [cents, setCents] = useState(0);
+  const [minWageCents, setMinWageCents] = useState(DEFAULT_MIN_WAGE_CENTS);
   const result = useMemo(
     () => (cents > 0 ? calculateFromCents(cents, minWageCents) : null),
     [cents, minWageCents],
-  )
+  );
 
   return (
-    <div className="mx-auto flex min-h-svh max-w-[560px] flex-col px-4 py-8 md:px-8 md:py-16">
+    <div className="mx-auto flex min-h-svh max-w-140 flex-col px-4 py-8 md:px-8 md:py-16">
       <header className="mb-8 md:mb-10">
         <p className="mb-2 text-sm font-medium tracking-wide text-accent uppercase">
           ME · Fator R · Anexo III
@@ -24,8 +24,8 @@ export default function App() {
           Calculadora ME
         </h1>
         <p className="mt-3 text-base text-muted">
-          Informe o valor bruto recebido. A simulação aplica 6% de DAS, pró-labore
-          de 28% com piso no salário mínimo e INSS de 11%.
+          Informe o valor bruto recebido. A simulação aplica 6% de DAS,
+          pró-labore de 28% com piso no salário mínimo e INSS de 11%.
         </p>
       </header>
 
@@ -39,7 +39,11 @@ export default function App() {
               >
                 Valor bruto recebido
               </label>
-              <CurrencyInput id="valor-bruto" cents={cents} onChange={setCents} />
+              <CurrencyInput
+                id="valor-bruto"
+                cents={cents}
+                onChange={setCents}
+              />
             </div>
             <div>
               <label
@@ -60,7 +64,7 @@ export default function App() {
         <section className="rounded-card border border-border bg-surface p-5 shadow-card md:p-6">
           <h2
             className={`text-sm font-medium tracking-wide text-muted uppercase ${
-              result === null ? 'mb-1' : 'mb-4'
+              result === null ? "mb-1" : "mb-4"
             }`}
           >
             Resultado
@@ -84,5 +88,5 @@ export default function App() {
         Estimativa simplificada. Não substitui orientação contábil.
       </footer>
     </div>
-  )
+  );
 }
